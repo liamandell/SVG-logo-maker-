@@ -4,6 +4,7 @@ const filesystem = require('fs');
 
 
 
+
 class Svg{
     constructor(){
         this.textElement = ''
@@ -123,5 +124,6 @@ async function init() {
 	console.log("Writing shape to file [" + svg_file + "]");
 	writeToFile(svg_file, svgString); 
 }
+
 init()
 
