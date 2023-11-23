@@ -1,4 +1,6 @@
 # SVG-logo-maker-
+## video
+
 
 ## Overview
 This command-line application allows users to generate a customized SVG logo. Users can input text, choose text color, select a shape (circle, triangle, or square), and specify the shape's color. The application will create an SVG file named logo.svg based on the provided input.
