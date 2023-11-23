@@ -1,9 +1,19 @@
-const {circle, square, triangle} = require('./shapes.js');
+const {Circle, Square, Triangle} = require('./lib/shapes');
 let inquirer = require('inquirer');
 const filesystem = require('fs');
 
 
 
+class Text {
+    constructor(content, color) {
+        this.content = content;
+        this.color = color;
+    }
+
+    render() {
+        return `<text x="150" y="150" fill="${this.color}" dominant-baseline="middle" font-size="50" text-anchor="middle">${this.content}</text>`;
+    }
+}
 
 class Svg{
     constructor(){
@@ -11,7 +21,7 @@ class Svg{
         this.shapeElement = ''
     }
     render(){
-        return `<svg height="400" width="400">
+        return `<svg height="300" width="300">
         ${this.shapeElement}
         ${this.textElement}
         </svg>`
@@ -22,6 +32,7 @@ class Svg{
     addText(text){
         this.textElement += text.render()
     }
+  
 }
 
   const questions = [
@@ -82,13 +93,13 @@ async function init() {
 	}
 	console.log("User text: [" + user_text + "]");
 	//user font color
-	user_font_color = answers["text-color"];
+	let user_font_color = answers["text-color"];
 	console.log("User font color: [" + user_font_color + "]");
 	//user shape color
-	user_shape_color = answers.shape;
+	let user_shape_color = answers.shape;
 	console.log("User shape color: [" + user_shape_color + "]");
     //user shape type
-	user_shape_type = answers["pixel-image"];
+	let user_shape_type = answers["pixel-image"];
 	console.log("User entered shape = [" + user_shape_type + "]");
 	
 	// Create the shape
@@ -112,8 +123,9 @@ async function init() {
 
 	// Generate the shape
 	var svg = new Svg();
-	svg.setTextElement(user_text, user_font_color);
-	svg.setShapeElement(user_shape);
+	const userText = new Text(user_text, user_font_color);
+    svg.addText(userText);
+	svg.addShape(user_shape);
 	svgString = svg.render();
 	
 	// Display the shape
@@ -124,6 +136,4 @@ async function init() {
 	console.log("Writing shape to file [" + svg_file + "]");
 	writeToFile(svg_file, svgString); 
 }
-
 init()
-

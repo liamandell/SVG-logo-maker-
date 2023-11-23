@@ -1,0 +1,4 @@
+<svg height="300" width="300">
+        <rect x="0" y="0" height="300" width="300" fill="green"/>
+        <text x="150" y="150" fill="blue" dominant-baseline="middle" font-size="50" text-anchor="middle">GGG</text>
+        </svg>
