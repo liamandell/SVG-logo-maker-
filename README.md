@@ -1,6 +1,9 @@
 # SVG-logo-maker-
 ## video
-
+<video width="320" height="240" controls>
+  <source src="/Users/liamandell/Downloads/Challenge 10.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Overview
 This command-line application allows users to generate a customized SVG logo. Users can input text, choose text color, select a shape (circle, triangle, or square), and specify the shape's color. The application will create an SVG file named logo.svg based on the provided input.
